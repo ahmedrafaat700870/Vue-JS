@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <img v-if="slected" :src="slected" alt="">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var photos = [
+            "https://via.placeholder.com/150/0000FF/808080 ?Text=Digital.comC/O https://placeholder.com/",
+            "https://via.placeholder.com/150/FF0000/FFFFFF?Text=Down.comC/O https://placeholder.com/",
+            "https://via.placeholder.com/150/FFFF00/000000?Text=WebsiteBuilders.comC/O https://placeholder.com/",
+            "https://via.placeholder.com/150/000000/FFFFFF/?text=IPaddress.netC/O https://placeholder.com/",
+        ] ;
+        let app = new Vue ({
+            el: '#app' , 
+            data : {
+                photo: photos , 
+                slected : null  
+            } ,
+            methods: {
+                randamImg: function (images) {
+                    return images[Math.floor(Math.random() * images.length)] ;
+                }
+            },
+            created() {
+                this.slected = this.randamImg(this.photo) ;
+            }
+        })
+    </script>
+</body>
+</html>

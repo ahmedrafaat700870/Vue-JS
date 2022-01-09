@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="container" >
+        <div class="question" v-for="(question , index)  in questions"> 
+            <div @click="question.open = !question.open" class="question-name">{{question.numberOfQuestion}}</div>
+            <transition name="bounce">
+                <div class="results" v-if="question.open">{{question.content}}</div>            
+            </transition>
+        </div>
+
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var question = {
+            "questionOne": {
+                open: false , 
+                numberOfQuestion: 'question One',
+                content: "Your question is : bla bla bla"
+            },
+            "questionTow": {
+                open: false , 
+                numberOfQuestion: 'question tow',
+                content: "Your question is : bla bla bla"
+            },
+            "questionThree": {
+                open: false , 
+                numberOfQuestion: 'question three',
+                content: "Your question is : bla bla bla"
+            },
+            "questionFour": {
+                open: false , 
+                numberOfQuestion: 'question four',
+                content: "Your question is : bla bla bla"
+            },
+            "questionFive": {
+                open: false , 
+                numberOfQuestion: 'question five',
+                content: "Your question is : bla bla bla"
+            },
+        }
+        let app = new Vue ({
+            el : '#app' , 
+            data: {
+                questions: question 
+            }
+        })
+    </script>
+</body>
+</html>

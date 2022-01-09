@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="titel">Write Your Massage ( {{maxChracters}} Charters )</div>
+        <textarea v-model="counter" class="Content" @input="checkChracters"  :maxlength="maxChracters">
+
+        </textarea>
+        <span class="max-chraters">
+            Left | <span :class="{'no-done' : done}">{{chrs}}</span>
+        </span>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue ({
+            el: '#app', 
+            data: {
+                counter: null ,
+                maxChracters: 50, 
+                chrs: 50 ,
+                done: false 
+            } , 
+            methods: {
+                checkChracters: function () {
+                    this.chrs = this.maxChracters - this.counter.length ;
+                    this.counter.length == this.maxChracters ? this.done = true : this.done = false ;
+                    console.log(this.counter.length) ;
+                    console.log(this.done) ;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

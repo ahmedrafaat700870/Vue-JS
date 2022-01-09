@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="show" :style="{ backgroundImage: 'linear-gradient('+ diraction +' , '+ firstColor +' , '+ thcondColor +')'}"> Linder Gradiant</div>
+        <span class="line"></span>
+        <form class="form-contnet">
+            <div class="diriction">
+                <label for="">diration</label>
+                <input type="text" v-model="diraction">
+            </div>
+            <div class="first-color">
+                <label for="">first color</label>
+                <input type="text" v-model="firstColor">
+            </div>
+            <div class="thcond-color">
+                <label >thcond color</label>
+                <input type="text" v-model="thcondColor">
+            </div>
+        </form>
+    <div class="code">Css Code :  background-image: linear-gradient({{diraction}}, {{firstColor}}, {{thcondColor}});</div>
+        <div class="syntacs">Syentax :background-image: linear-gradient(direction, color-stop1, color-stop2);</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue ({
+            el: '#app', 
+            data: {
+                diraction: 'to right',
+                firstColor: 'red', 
+                thcondColor: 'yellow',  
+            }
+        })
+    </script>
+</body>
+</html>

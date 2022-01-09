@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="content">
+            <h1 class="titel">Product tiitel</h1>
+            <p class="product-descriptions">Product Descrtiptions</p>
+            <input style="margin-top: 20px;background-color: white;" class="inp-content" type="range" min="1" max="20" step="1" v-model="amount">
+            <span class="amount">Aoumnt: {{amount}}</span>
+            <span class="price">Price: ${{price}}</span>
+            <span class="total"> Total ${{total}}</span>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app', 
+            data: {
+                amount: 1 , 
+                price: 50 , 
+            }, 
+            computed: {
+                total: function () {
+                    return this.amount * this.price ;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

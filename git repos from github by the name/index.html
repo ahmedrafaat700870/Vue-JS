@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+        <div id="app" class="content">
+            <input type="text" v-model="users" class="inp-repo" />
+            <button @click="getRepos" class="btn">Get Repos</button>
+            <div  v-for="reop in repos">
+              <h2 class="msg-repos">{{reop.name}}</h2>
+            </div>
+          </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {
+          users: null,
+          repos: null,
+        },
+        methods: {
+          getRepos: function () {
+            return axios
+              .get(`https://api.github.com/users/${this.users}/repos`)
+              .then((response) => {
+                this.repos = response.data;
+              }).catch(error => {
+                console.log(error) ;
+              });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
