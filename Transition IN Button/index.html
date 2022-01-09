@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="app" class="container">
+        <button class="btn-app" @click="massage = !massage">{{massage ? 'Show Massage' : 'Hide Massage'}}</button>
+        <transition name="bounce">
+            <div class="alert" v-if="massage">
+                Alert Massage.
+            </div>
+        </transition>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue ({
+            el : '#app' , 
+            data: {
+                massage: false , 
+            }
+        })
+    </script>
+</body>
+</html>

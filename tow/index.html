@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a">
+        <form>
+            <input type="text" placeholder="Enter the Slag" v-model:value="slag">
+            <button @click.prevent="convert">Convert</button>
+            <p>http:/alzero-wep-school:{{output}}</p>
+        </form>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el : '#a',
+            data: {
+                slag: "",
+                output: ""
+            },
+            methods: {
+                convert() {
+                    let result = this.slag ;
+                    console.log(result) ;
+                    result = result.toLowerCase().replace('&' , '-and-').replace(/\s+/g,"-");
+                    this.output = result ;
+                }
+            }
+        })
+    </script>
+    <style lang="scss" scoped>
+        
+    </style>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" >
+        <form action="" class="conaitner">
+            <div class="errors" v-for="error in errors ">
+                {{error}}
+            </div>
+            <input type="text" placeholder="Type your Name" v-model="name">
+            <input type="email" placeholder="Type your Email" v-model="email">
+            <input type="text" placeholder="Type your Massage" v-model="massage">
+            <button :disabled="!name || !email || ! massage" @click="check">Send Massage</button>
+        </form>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue ({
+            el : "#app" , 
+            data: {
+                name: null ,
+                email: null , 
+                massage: null ,
+                errors : [] ,
+            }, 
+            methods: {
+                check : function (e) {
+                    if (!this.name || !this.email || !this.massage ) {
+                        this.errors = [] ;
+                        this.errors.push('Enter All the Filds ') ;
+                    } else {
+                        return true ;
+                    }
+                    e.preventDefault();
+                }
+            },
+        })
+    </script>
+</body>
+</html>

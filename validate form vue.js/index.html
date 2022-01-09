@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <form
+        action=""
+        method="POST"
+        class="container form-validation"
+        @submit="validateForm"
+      >
+        <div>
+          <div class="errors" v-for="errors in formErrors">{{errors}}</div>
+        </div>
+        <div class="form-content">
+          <label class="form-label">User Name</label>
+          <input type="text" placeholder="User Name" v-model="username" />
+        </div>
+        <div class="form-content">
+          <label class="form-label">Phone Number</label>
+          <input type="text" placeholder="Phone Number" v-model="phonenumber" />
+        </div>
+        <div class="form-content">
+          <textarea v-model="textarea" class="texterea"></textarea>
+        </div>
+        <input type="submit" value="submit" class="form-inp" />
+      </form>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {
+          username: null,
+          phonenumber: null,
+          formErrors: [],
+          textarea: null,
+          countcraters: 10,
+        },
+        methods: {
+          validateForm: function (e) {
+            this.formErrors = [];
+            // check if the User Name filed  is't impty .
+            if (!this.username) {
+              this.formErrors.push("username can not be impty .");
+            }
+            // check if the Pone Number filed is not impty.
+            if (!this.phonenumber) {
+              this.formErrors.push("phonenumber can not be impty .");
+            }
+            // check if the textarea filed is not impty.
+            if (!this.textarea) {
+              this.formErrors.push("textarea can not be impty .");
+            }
+            // check if the the carater's that the username filed contains is't large than the countercracters.
+            if (this.username && this.username.length > this.countcraters) {
+              this.formErrors.push("username can not contains crakters large than 10");
+            }
+            // return true if the formErrors array is empty .
+            if (this.formErrors.length == 0) {
+                return true ;
+            }
+            e.preventDefault();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
